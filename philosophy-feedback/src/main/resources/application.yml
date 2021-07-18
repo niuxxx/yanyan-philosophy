@@ -1,0 +1,52 @@
+server:
+  port: 9999
+
+#关闭es的健康检查
+management:
+  health:
+    elasticsearch:
+      enabled: false
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/philosophy?useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true&autoReconnect=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      read-only: false
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      minimum-idle: 20
+      maximum-pool-size: 100
+      auto-commit: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    timeout: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+  security:
+    user:
+      name: admin
+      password: admin
+
+
+elasticsearch:
+  enable: false
+  cluster:
+    nodes: 127.0.0.1:9200
+  pool: 5
+  username:
+  password:
+  connectTimeout: 25000
+  requestTimeout: 15000
+  socketTimeout: 15000
